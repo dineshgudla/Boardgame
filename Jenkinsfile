@@ -1,15 +1,15 @@
 pipeline {
     agent any
-
+    
     tools {
         maven 'maven3.6'
         jdk 'jdk17'
-        
     }
+
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/devopswithkrishnareddy/Boardgame.git'
+               git branch: 'main', url: 'https://github.com/devopswithkrishnareddy/Boardgame.git'
             }
         }
         stage('compile') {
@@ -19,10 +19,10 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'mvn test'
+               sh 'mvn test'
             }
         }
-        stage('Hello') {
+        stage('package') {
             steps {
                 sh 'mvn package'
             }
